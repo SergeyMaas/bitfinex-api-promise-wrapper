@@ -1,0 +1,27 @@
+{
+  "name": "Bitfinex-api-apomise-wrapper",
+  "version": "1.0.0",
+  "description": "Empty project for clone to dev",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "babel -w src/ -d build/ | nodemon build/",
+    "start": "NODE_ENV=production node build/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "crypto-js": "^3.1.9-1",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0"
+  }
+}
