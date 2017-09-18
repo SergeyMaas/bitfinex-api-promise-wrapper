@@ -120,6 +120,14 @@ var BFXRest = function () {
 
       return _axios2.default.get(url, {
         params: params
+      }).then(function (_ref3) {
+        var data = _ref3.data;
+
+        if (data.message) {
+          throw new Error(data.message);
+        }
+
+        return data;
       });
     }
 
@@ -137,23 +145,23 @@ var BFXRest = function () {
   }, {
     key: 'newOrder',
     value: function newOrder() {
-      var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref3$symbol = _ref3.symbol,
-          symbol = _ref3$symbol === undefined ? isMissing('symbol') : _ref3$symbol,
-          _ref3$amount = _ref3.amount,
-          amount = _ref3$amount === undefined ? isMissing('amount') : _ref3$amount,
-          _ref3$price = _ref3.price,
-          price = _ref3$price === undefined ? isMissing('price') : _ref3$price,
-          _ref3$exchange = _ref3.exchange,
-          exchange = _ref3$exchange === undefined ? isMissing('exchange') : _ref3$exchange,
-          _ref3$side = _ref3.side,
-          side = _ref3$side === undefined ? isMissing('side') : _ref3$side,
-          _ref3$type = _ref3.type,
-          type = _ref3$type === undefined ? isMissing('type') : _ref3$type,
-          _ref3$post_only = _ref3.post_only,
-          post_only = _ref3$post_only === undefined ? false : _ref3$post_only,
-          _ref3$is_hidden = _ref3.is_hidden,
-          is_hidden = _ref3$is_hidden === undefined ? false : _ref3$is_hidden;
+      var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref4$symbol = _ref4.symbol,
+          symbol = _ref4$symbol === undefined ? isMissing('symbol') : _ref4$symbol,
+          _ref4$amount = _ref4.amount,
+          amount = _ref4$amount === undefined ? isMissing('amount') : _ref4$amount,
+          _ref4$price = _ref4.price,
+          price = _ref4$price === undefined ? isMissing('price') : _ref4$price,
+          _ref4$exchange = _ref4.exchange,
+          exchange = _ref4$exchange === undefined ? isMissing('exchange') : _ref4$exchange,
+          _ref4$side = _ref4.side,
+          side = _ref4$side === undefined ? isMissing('side') : _ref4$side,
+          _ref4$type = _ref4.type,
+          type = _ref4$type === undefined ? isMissing('type') : _ref4$type,
+          _ref4$post_only = _ref4.post_only,
+          post_only = _ref4$post_only === undefined ? false : _ref4$post_only,
+          _ref4$is_hidden = _ref4.is_hidden,
+          is_hidden = _ref4$is_hidden === undefined ? false : _ref4$is_hidden;
 
       var params = {
         symbol: symbol,
@@ -171,9 +179,9 @@ var BFXRest = function () {
   }, {
     key: 'newMultipleOrders',
     value: function newMultipleOrders() {
-      var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref4$orders = _ref4.orders,
-          orders = _ref4$orders === undefined ? isMissing('orders') : _ref4$orders;
+      var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref5$orders = _ref5.orders,
+          orders = _ref5$orders === undefined ? isMissing('orders') : _ref5$orders;
 
       if (_lodash2.default.isEmpty(orders) || !_lodash2.default.isArray(orders)) {
         throw new Error('Orders is empty or is not array');
@@ -188,9 +196,9 @@ var BFXRest = function () {
   }, {
     key: 'cancelOrder',
     value: function cancelOrder() {
-      var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref5$order_id = _ref5.order_id,
-          order_id = _ref5$order_id === undefined ? isMissing('order_id') : _ref5$order_id;
+      var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref6$order_id = _ref6.order_id,
+          order_id = _ref6$order_id === undefined ? isMissing('order_id') : _ref6$order_id;
 
       var params = {
         order_id: order_id
@@ -201,9 +209,9 @@ var BFXRest = function () {
   }, {
     key: 'cancelMultipleOrders',
     value: function cancelMultipleOrders() {
-      var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref6$orders = _ref6.orders,
-          orders = _ref6$orders === undefined ? isMissing('orders') : _ref6$orders;
+      var _ref7 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+          _ref7$orders = _ref7.orders,
+          orders = _ref7$orders === undefined ? isMissing('orders') : _ref7$orders;
 
       var params = {
         order_ids: _lodash2.default.map(orders, function (order) {

@@ -80,6 +80,13 @@ class BFXRest {
 
     return axios.get(url, {
       params
+    })
+    .then(({ data }) => {
+      if (data.message) {
+        throw new Error(data.message);
+      }
+
+      return data;
     });
   }
 
