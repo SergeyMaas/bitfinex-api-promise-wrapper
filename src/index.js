@@ -75,6 +75,13 @@ class BFXRest {
     });
   }
 
+  _pubReq(path, params = {}) {
+    const url = `${this.baseUrl}/${this.version}/${path}`;
+
+    return axios.get(url, {
+      params
+    });
+  }
 
   /**
    * balance - Current balance of wallets
@@ -107,9 +114,7 @@ class BFXRest {
       is_hidden
     };
 
-    // return this._authReq('order/new', params);
-
-    console.log('params', params);
+    return this._authReq('order/new', params);
   }
 
   newMultipleOrders({
@@ -159,6 +164,26 @@ class BFXRest {
 
   ordersHistory() {
     return this._authReq('orders/hist');
+  }
+
+  ticker(symbol) {
+    return this._pubReq(`pubticker/${symbol}`);
+  }
+
+  symbols() {
+    return this._pubReq(`symbols`);
+  }
+
+  symbolDitails() {
+    return this._pubReq(`symbols_details`);
+  }
+
+  trades(symbol) {
+    return this._pubReq(`trades/${symbol}`);
+  }
+
+  stats(symbol) {
+    return this._pubReq(`stats/${symbol}`);
   }
 };
 
