@@ -111,6 +111,17 @@ var BFXRest = function () {
         return data;
       });
     }
+  }, {
+    key: '_pubReq',
+    value: function _pubReq(path) {
+      var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      var url = this.baseUrl + '/' + this.version + '/' + path;
+
+      return _axios2.default.get(url, {
+        params: params
+      });
+    }
 
     /**
      * balance - Current balance of wallets
@@ -155,9 +166,7 @@ var BFXRest = function () {
         is_hidden: is_hidden
       };
 
-      // return this._authReq('order/new', params);
-
-      console.log('params', params);
+      return this._authReq('order/new', params);
     }
   }, {
     key: 'newMultipleOrders',
@@ -218,6 +227,31 @@ var BFXRest = function () {
     key: 'ordersHistory',
     value: function ordersHistory() {
       return this._authReq('orders/hist');
+    }
+  }, {
+    key: 'ticker',
+    value: function ticker(symbol) {
+      return this._pubReq('pubticker/' + symbol);
+    }
+  }, {
+    key: 'symbols',
+    value: function symbols() {
+      return this._pubReq('symbols');
+    }
+  }, {
+    key: 'symbolDitails',
+    value: function symbolDitails() {
+      return this._pubReq('symbols_details');
+    }
+  }, {
+    key: 'trades',
+    value: function trades(symbol) {
+      return this._pubReq('trades/' + symbol);
+    }
+  }, {
+    key: 'stats',
+    value: function stats(symbol) {
+      return this._pubReq('stats/' + symbol);
     }
   }]);
   return BFXRest;
